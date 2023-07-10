@@ -1,37 +1,45 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Card } from "./card.js";
+import { Context } from "../store/appContext.js";
+
 
 export const CardGroup = () => {
 
-    <Card/>
-	return (
+    const { actions, store } = useContext(Context);
 
-     
+
+   
+	return (
+        <>
+
+        <h1 className="text-danger">Characters</h1>
         <div className="row row-cols-1 row-cols-md-3 g-4">
             
             <div className="col">
-                <div className="card">
-                <img src="..." className="card-img-top" alt="..."/>
-                <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-                </div>
+               {/* {store.characters.map(item => (
+							<Card
+								key={item.id}
+								nombre={item.name}
+								// id={item.id}
+								// gender={item.gender}
+								// hair_color={item.hair_color}
+								// eye_color={item.eye_color}
+							/>
+						))} */}
             </div>
-            <div className="col">
-                <div className="card">
-                <img src="..." className="card-img-top" alt="..."/>
-                <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+            <div className="card" style="width: 18rem;">
+                    <img src="..." className="card-img-top" alt="..."/>
+                    <div className="card-body">
+                        <h5 className="card-title"></h5>
+                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" className="btn btn-primary">Go somewhere</a>
+                    </div>
                 </div>
-                </div>
-            </div>
            
         </div>
 
 
 
-
+        </>
     );
 };
