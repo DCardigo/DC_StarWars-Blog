@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			characters: [
 				
 			],
+			
 			demo: [
 				{
 					title: "FIRST",
@@ -18,16 +19,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
-			getCharacters: (i) => {
+			
+
+			getCharacters: () => {
 				fetch("https://www.swapi.tech/api/people/", {
 					method: "GET"
 				})
 				.then(res => res.json())
 				.then(data => setStore({ characters: data.results}))
 				// .then(data => console.log(data))
-
 				.catch(err => console.error(err))
-				
 			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {

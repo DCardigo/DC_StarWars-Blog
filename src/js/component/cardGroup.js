@@ -14,14 +14,14 @@ console.log(store.characters);
 
         <h1 className="text-danger">Characters</h1>
         <div className="row row-cols-1 row-cols-md-3 g-4">
-              {store.characters.map((item,i) => (
+              {store.characters.map((item) => (
                 <Card
-                    key={item[i]}
-                    nombre={item.name}
-                        // id={item.uid}
-                        // gender={item.gender}
-                        // hair_color={item.hair_color}
-                        // eye_color={item.eye_color}
+                    key={item.uid}
+                    name={item.name}
+                    id={item.id}
+                    gender={item.gender}
+                    hair_color={item.hair_color}
+                    eye_color={item.eye_color}
                 />))}
             
            
