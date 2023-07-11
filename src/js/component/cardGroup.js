@@ -8,6 +8,7 @@ export const CardGroup = () => {
     const { actions, store } = useContext(Context);
 
 console.log(store.characters);
+console.log(store.infoCharacters);
    
 	return (
         <>
@@ -16,12 +17,12 @@ console.log(store.characters);
         <div className="row row-cols-1 row-cols-md-3 g-4">
               {store.characters.map((item) => (
                 <Card
-                    key={item.uid}
+                    // key={item.uid}
                     name={item.name}
-                    id={item.id}
-                    gender={item.gender}
-                    hair_color={item.hair_color}
-                    eye_color={item.eye_color}
+                    // id={item.id}
+                    // gender={item.gender}
+                    // hair_color={item.hair_color}
+                    // eye_color={item.eye_color}
                 />))}
             
            

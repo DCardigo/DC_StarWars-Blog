@@ -12,8 +12,11 @@ export const Home = () => {
 	useEffect(() => {
 		actions.getCharacters();
 	}, []);
+	useEffect(() => {
+		actions.getInfoCharacters();
+	}, []);
 
-	// console.log(store.characters);
+	
 
 
 return (
