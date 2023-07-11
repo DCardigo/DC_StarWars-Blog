@@ -9,9 +9,9 @@ export const Home = () => {
 
 	const { actions, store } = useContext(Context);
 
-	// useEffect(() => {
-	// 	actions.getCharacters();
-	// }, []);
+	useEffect(() => {
+		actions.getCharacters();
+	}, []);
 
 	// console.log(store.characters);
 
@@ -20,6 +20,8 @@ return (
 
 
 	<CardGroup/>
+
+	
 
 
 	);
