@@ -23,17 +23,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 			getInfoCharacters: () => {
-				for (let i = 0; i <= 10; i++)
-				
-				fetch(`https://www.swapi.tech/api/people/${i}`, {
+				const store = getStore();
+
+				const personajes = store.characters.map((item) => (
+
+					
+				fetch(`https://www.swapi.tech/api/people/${item.uid}`, {
 					method: "GET"
 				})
 				.then(res => res.json())
-				.then(data => setStore({ infoCharacters: data.result.properties}))
-				// .then(data => setStore({ infoCharacters: data.result.properties}))
+				.then(data => setStore({ ...getStore(), infoCharacters: data.result.properties}))
 				.catch(err => console.error(err))
-	
+				))
+
+				// setStore({infoCharacters:personajes})
 				},
+				
+				
 		
 
 			getCharacters: () => {
@@ -44,6 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.then(data => setStore({ characters: data.results}))
 				// .then(data => console.log(data))
 				.catch(err => console.error(err))
+				// getActions().getInfoCharacters()
 				
 			},
 			// Use getActions to call a function within a fuction
