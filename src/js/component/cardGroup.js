@@ -1,6 +1,7 @@
 import React,{useContext} from "react";
 import { Card } from "./card.js";
 import { Context } from "../store/appContext.js";
+import { Link} from "react-router-dom";
 
 
 export const CardGroup = () => {
@@ -25,22 +26,12 @@ console.log(store.infoCharacters);
                     // eye_color={item.eye_color}
                 />))}
             
-           
-            {/* <div className="card" style={{width: 18 + 'rem'}}>
-                {/* <Card/> */}
-                {/* {store.characters.map((item,i) => (
-                <Card
-                    key={item[i]}
-                    nombre={item.name}
-                        // id={item.uid}
-                        // gender={item.gender}
-                        // hair_color={item.hair_color}
-                        // eye_color={item.eye_color}
-                />))} */}
-                   
-            {/* </div> */} 
-           
         </div>
+        <Link to="/CharactersDetails">
+				<span className="btn btn-primary btn-lg" href="#" role="button">
+					Details
+				</span>
+        </Link>
 
 
 

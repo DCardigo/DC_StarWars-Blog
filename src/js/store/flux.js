@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			characters: [],
-			infoCharacters:[{}],
+			infoCharacters:[],
 			
 			
 			demo: [
@@ -23,7 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 			getInfoCharacters: () => {
-				for (let i = 1; i <= 10; i++)
+				for (let i = 0; i <= 10; i++)
 				
 				fetch(`https://www.swapi.tech/api/people/${i}`, {
 					method: "GET"
