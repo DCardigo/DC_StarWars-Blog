@@ -5,7 +5,7 @@ export const Card = (props) => {
     const { actions, store } = useContext(Context);
 	return (
 
-        <div className="card" style={{width: 18 + 'rem'}} key={props.key}>
+        <div className="card" style={{width: 18 + 'rem'}}>
             <img src="https://e0.pxfuel.com/wallpapers/813/200/desktop-wallpaper-holden-decor-statement-sparkle-star-12616-black-silver.jpg" className="card-img-top" alt="..."/>
             <div className="card-body">
                 <h5 className="card-title">{props.name}</h5>
@@ -22,7 +22,7 @@ Card.propTypes = {
 
 	name: PropTypes.string,
 	id: PropTypes.number,
-    key: PropTypes.string,
+    // key: PropTypes.string,
     gender: PropTypes.string,
     hair_color: PropTypes.string,
     eye_color: PropTypes.string,

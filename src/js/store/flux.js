@@ -2,8 +2,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			characters: [],
-			infoCharacters:[],
-			
+			infoCharacters:[
+				{
+					birth_year: "",
+					created: "",
+					edited: "",
+					eye_color: "",
+					gender: "",
+					hair_color: "",
+					height: "",
+					homeworld: "",
+					mass: "",
+					name: "",
+					skin_color: "",
+					url: ""
+				}
+			],
+	
 			
 			demo: [
 				{
@@ -20,6 +35,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 
+	
 
 
 			getInfoCharacters: () => {
@@ -32,11 +48,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "GET"
 				})
 				.then(res => res.json())
-				.then(data => setStore({ ...getStore(), infoCharacters: data.result.properties}))
+				.then(data => setStore({...getStore(),infoCharacters:data.result.properties}))
+				// .then(data => setStore({ ...getStore().infoCharacters,  infoCharacters:data.result.properties}))
 				.catch(err => console.error(err))
 				))
 
-				// setStore({infoCharacters:personajes})
+				setStore({infoCharacters:personajes})
 				},
 				
 				
