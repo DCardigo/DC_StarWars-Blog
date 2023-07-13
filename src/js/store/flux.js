@@ -2,22 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			characters: [],
-			infoCharacters:[
-				{
-					birth_year: "",
-					created: "",
-					edited: "",
-					eye_color: "",
-					gender: "",
-					hair_color: "",
-					height: "",
-					homeworld: "",
-					mass: "",
-					name: "",
-					skin_color: "",
-					url: ""
-				}
-			],
+			infoCharacters:[],
 	
 			
 			demo: [
@@ -34,10 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
-
 	
-
-
 			getInfoCharacters: () => {
 				const store = getStore();
 
@@ -48,7 +30,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "GET"
 				})
 				.then(res => res.json())
-				.then(data => setStore({...getStore(),infoCharacters:data.result.properties}))
+				.then(data => setStore({infoCharacters: getStore(). infoCharacters.concat(data.result.properties)}))
 				// .then(data => setStore({ ...getStore().infoCharacters,  infoCharacters:data.result.properties}))
 				.catch(err => console.error(err))
 				))
@@ -69,7 +51,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.catch(err => console.error(err))
 				// getActions().getInfoCharacters()
 				
-			},
+				},				
+			
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
