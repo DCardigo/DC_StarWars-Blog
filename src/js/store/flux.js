@@ -1,8 +1,13 @@
+
+
 const getState = ({ getStore, getActions, setStore }) => {
+
 	return {
 		store: {
 			characters: [],
 			infoCharacters:[],
+			favoritos:[],
+			contador: "0",
 	
 			
 			demo: [
@@ -19,27 +24,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
-	
-			getInfoCharacters: () => {
-				const store = getStore();
 
-				const personajes = store.characters.map((item) => (
+			
 
-					
-				fetch(`https://www.swapi.tech/api/people/${item.uid}`, {
-					method: "GET"
-				})
-				.then(res => res.json())
-				.then(data => setStore({infoCharacters: getStore(). infoCharacters.concat(data.result.properties)}))
-				// .then(data => setStore({ ...getStore().infoCharacters,  infoCharacters:data.result.properties}))
-				.catch(err => console.error(err))
-				))
+			addFavorito:(name, id)=> {
+				setStore({favoritos: getStore().favoritos.concat(name)})
+				setStore(contador += 1)
 
-				setStore({infoCharacters:personajes})
-				},
+			},
+
+
+
+			removeFav: (el,i) => {
+				const updatedItems = getStore().favoritos.filter((item) => item != el);
 				
-				
-		
+				setStore({favoritos:updatedItems})
+		 
+			  },
+
 
 			getCharacters: () => {
 				fetch("https://www.swapi.tech/api/people/", {
@@ -49,10 +51,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.then(data => setStore({ characters: data.results}))
 				// .then(data => console.log(data))
 				.catch(err => console.error(err))
-				// getActions().getInfoCharacters()
 				
-				},				
-			
+				
+				},			
+				
+			getInfoCharacters: (uid) => {
+				fetch("https://www.swapi.tech/api/people/"+uid, {
+					method: "GET"
+				})
+				.then(res => res.json())
+				.then(data => setStore({ infoCharacters: data.result.properties}))
+				// .then(data => console.log(data))
+				.catch(err => console.error(err))
+				},	
+		
 
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {

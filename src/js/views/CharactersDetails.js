@@ -1,10 +1,14 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import { LoremIpsum } from "lorem-ipsum";
 import { Context } from "../store/appContext.js";
+import { useParams } from "react-router";
+
 
 
 export const CharactersDetails = () =>{
     
+    const params = useParams()
+
     const { actions, store } = useContext(Context);
 
     const lorem = new LoremIpsum({
@@ -18,7 +22,14 @@ export const CharactersDetails = () =>{
         }
       });
     const paragraphs = lorem.generateParagraphs(2);
-    // console.log(store.characters);
+
+
+    useEffect(() => {
+		actions.getInfoCharacters(params.uid);
+		
+	}, []);
+
+    // console.log(store.infoCharacters);
 
     return(<>
         <div className="d-flex" >
@@ -26,7 +37,7 @@ export const CharactersDetails = () =>{
             
             <div  className="mx-5 mt-5">
 
-                <h1 className="mb-3 text-center" >Luke</h1>
+                <h1 className="mb-3 text-center" >{store.infoCharacters.name}</h1>
 
                 <p className="text-center">{paragraphs}</p>
             </div>
@@ -40,19 +51,24 @@ export const CharactersDetails = () =>{
                     <p>{store.infoCharacters.name}</p>
                 </div>
                 <div className="col-2 text-center text-danger">
-                    <p className="fw-bold">Birth Year</p>
+                    <p className="fw-bold" >Birth Year</p>
+                    <p>{store.infoCharacters.birth_year}</p>
                 </div>
                 <div className="col-2 text-center text-danger">
-                    <p className="fw-bold">Gender</p>
+                    <p className="fw-bold" >Gender</p>
+                    <p>{store.infoCharacters.gender}</p>
                 </div>
                 <div className="col-2 text-center text-danger">
-                    <p className="fw-bold">Height</p>
+                    <p className="fw-bold" >Height</p>
+                    <p>{store.infoCharacters.height}</p>
                 </div>
                 <div className="col-2 text-center text-danger">
-                    <p className="fw-bold">Skin Color</p>
+                    <p className="fw-bold" >Skin Color</p>
+                    <p>{store.infoCharacters.skin_color}</p>
                 </div>
                 <div className="col-2 text-center text-danger">
-                    <p className="fw-bold">Eye color</p>
+                    <p className="fw-bold" >Eye color</p>
+                    <p>{store.infoCharacters.eye_color}</p>
                 </div>
 
         </div>

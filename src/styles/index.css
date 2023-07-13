@@ -6,10 +6,8 @@
     height: 300px;
 }
 
-#caja-bottom{
-
-    /* width: 712px; */
-
-    /* border-color: brown;
-    border: 5px; */
-}
+.dropdown-menu[data-bs-popper] {
+    
+    left: -15;
+    
+  }
