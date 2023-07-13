@@ -29,16 +29,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			addFavorito:(name, id)=> {
 				setStore({favoritos: getStore().favoritos.concat(name)})
-				setStore(contador += 1)
+				// setStore(contador += 1)
+				const add =(getStore().favoritos.indexOf(el) !=-1)? 
+				null
+				:setStore({favoritos: getStore().favoritos.concat(name)})
+
+				setStore({favoritos:add})
 
 			},
 
 
 
 			removeFav: (el,i) => {
-				const updatedItems = getStore().favoritos.filter((item) => item != el);
+				// const updatedItems = getStore().favoritos.filter((item) => item != el);
 				
+				// 
+				
+
+				const updatedItems =(getStore().favoritos.indexOf(el) !=-1)? 
+				getStore().favoritos.filter((item) => item != el)
+				:null
+
 				setStore({favoritos:updatedItems})
+				
 		 
 			  },
 

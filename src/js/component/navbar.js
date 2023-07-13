@@ -16,7 +16,7 @@ export const Navbar = () => {
 			</Link>
 			
 		 <div className="dropdown">
-				<button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+				<button className="btn btn-primary dropdown-toggle mx-5" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 					Favorites
 					<span className="badge bg-secondary">{store.contador}</span>
 				</button>
