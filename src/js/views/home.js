@@ -14,6 +14,9 @@ export const Home = () => {
 	useEffect(() => {
 		actions.getCharacters();
 		
+		actions.getPlanets();
+		actions.getVehicles();
+		
 	}, []);
 
 return (
@@ -25,7 +28,28 @@ return (
 		  {store.characters.map((item) => 
 			<Card
 				uid={item.uid}
-				// name={item.name}
+				key={item.uid}
+				item={item}
+			/>)}
+		
+	</div>
+	<br/>
+	<h1 className="text-danger">Planets</h1>
+	<div className="row row-cols-1 row-cols-md-3 g-4 flex-nowrap overflow-auto">
+		  {store.planets.map((item) => 
+			<Card
+				uid={item.uid}
+				key={item.uid}
+				item={item}
+			/>)}
+		
+	</div>
+	<br/>
+	<h1 className="text-danger">Vehicles</h1>
+	<div className="row row-cols-1 row-cols-md-3 g-4 flex-nowrap overflow-auto">
+		  {store.vehicles.map((item) => 
+			<Card
+				uid={item.uid}
 				key={item.uid}
 				item={item}
 			/>)}

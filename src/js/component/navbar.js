@@ -1,5 +1,6 @@
 import React, {useContext} from "react";
 import { Link } from "react-router-dom";
+
 import { Context } from "../store/appContext.js";
 
 
@@ -7,7 +8,7 @@ export const Navbar = () => {
 	const { actions, store } = useContext(Context);
 
 	
-
+console.log(store.favoritos);
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
 			<Link to="/">
@@ -16,19 +17,32 @@ export const Navbar = () => {
 			</Link>
 			
 		 <div className="dropdown">
-				<button className="btn btn-primary dropdown-toggle mx-5" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+				<button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 					Favorites
-					<span className="badge bg-secondary">{store.contador}</span>
+					<span className="badge bg-secondary">{store.favoritos.length}</span>
 				</button>
-				<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-				{store.favoritos.map((el,i) => (
-                <li id={i} key = {i} >
+				<ul className="dropdown-menu  dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+				
+				
+				{store.favoritos.length === 0?  
+				
+				<li>
+					Empty
+				</li>
+				
+				:store.favoritos.map((el,i) => (
 
-					 {el}
-
+					<li id={i} key = {i} >
+					<Link to= {`/charactersdetails/${el.id}`}>
+					{el.name}
+					</Link>
+					
+					
 					<button  type="button" onClick={() => actions.removeFav(el,i)} className="btn float-end px-2 py-0" aria-label="Close">
 					<i className="fas fa-trash"></i>
 					</button>
+
+					
    
 					
 				</li>

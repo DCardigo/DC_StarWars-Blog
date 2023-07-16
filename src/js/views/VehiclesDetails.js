@@ -5,7 +5,7 @@ import { useParams } from "react-router";
 
 
 
-export const CharactersDetails = () =>{
+export const VehiclesDetails = () =>{
     
     const params = useParams()
 
@@ -25,7 +25,7 @@ export const CharactersDetails = () =>{
 
 
     useEffect(() => {
-		actions.getInfoCharacters(params.uid);
+		actions.getInfoVehicles(params.uid);
 		
 	}, []);
 
@@ -37,7 +37,7 @@ export const CharactersDetails = () =>{
             
             <div  className="mx-5 mt-5">
 
-                <h1 className="mb-3 text-center" >{store.infoCharacters.name}</h1>
+                <h1 className="mb-3 text-center" >{store.infoVehicles.name}</h1>
 
                 <p className="text-center">{paragraphs}</p>
             </div>
@@ -48,27 +48,27 @@ export const CharactersDetails = () =>{
 
                 <div className="col-2 text-center text-danger">
                     <p className="fw-bold" >Name</p>
-                    <p>{store.infoCharacters.name}</p>
+                    <p>{store.infoVehicles.name}</p>
                 </div>
                 <div className="col-2 text-center text-danger">
                     <p className="fw-bold" >Birth Year</p>
-                    <p>{store.infoCharacters.birth_year}</p>
+                    <p>{store.infoVehicles.birth_year}</p>
                 </div>
                 <div className="col-2 text-center text-danger">
                     <p className="fw-bold" >Gender</p>
-                    <p>{store.infoCharacters.gender}</p>
+                    <p>{store.infoVehicles.gender}</p>
                 </div>
                 <div className="col-2 text-center text-danger">
                     <p className="fw-bold" >Height</p>
-                    <p>{store.infoCharacters.height}</p>
+                    <p>{store.infoVehicles.height}</p>
                 </div>
                 <div className="col-2 text-center text-danger">
                     <p className="fw-bold" >Skin Color</p>
-                    <p>{store.infoCharacters.skin_color}</p>
+                    <p>{store.infoVehicles.skin_color}</p>
                 </div>
                 <div className="col-2 text-center text-danger">
                     <p className="fw-bold" >Eye color</p>
-                    <p>{store.infoCharacters.eye_color}</p>
+                    <p>{store.infoVehicles.eye_color}</p>
                 </div>
 
         </div>

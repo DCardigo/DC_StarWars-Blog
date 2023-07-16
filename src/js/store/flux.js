@@ -6,10 +6,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			characters: [],
 			infoCharacters:[],
+			planets:[],
+			infoPlanets:[],
+			vehicles:[],
+			infoVehicles:[],
 			favoritos:[],
-			contador: "0",
-	
-			
+		
+
+
 			demo: [
 				{
 					title: "FIRST",
@@ -25,36 +29,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 
-			
+			// includes(),
 
-			addFavorito:(name, id)=> {
-				setStore({favoritos: getStore().favoritos.concat(name)})
-				// setStore(contador += 1)
-				const add =(getStore().favoritos.indexOf(el) !=-1)? 
-				null
-				:setStore({favoritos: getStore().favoritos.concat(name)})
-
-				setStore({favoritos:add})
-
+			addFavorito: (favList) => {
+				setStore({ favoritos: favList })
 			},
 
 
+			// addFavorito:(name,id)=> {
+
+			// 	// const nombre = getActions().addFavorito(name)
+			// 	setStore({favoritos: getStore().favoritos.concat({name,id})})
+
+			// 	// (getStore().favoritos.length === 0) ?
+			// 	// setStore({favoritos: getStore().favoritos.concat({name,id})})
+			// 	// :(getStore().favoritos.indexOf(name) !=-1)?
+			// 	// null
+			// 	// :setStore({favoritos: getStore().favoritos.concat({name,id})})
+
+			// },
+
+			// 
 
 			removeFav: (el,i) => {
-				// const updatedItems = getStore().favoritos.filter((item) => item != el);
-				
-				// 
-				
-
-				const updatedItems =(getStore().favoritos.indexOf(el) !=-1)? 
+				const updatedItems =(getStore().favoritos.indexOf(el) !=-1)?
 				getStore().favoritos.filter((item) => item != el)
 				:null
 
 				setStore({favoritos:updatedItems})
-				
-		 
-			  },
 
+			  },
+			
+			  //CHARACTERS
 
 			getCharacters: () => {
 				fetch("https://www.swapi.tech/api/people/", {
@@ -62,22 +68,64 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				.then(res => res.json())
 				.then(data => setStore({ characters: data.results}))
-				// .then(data => console.log(data))
+		
 				.catch(err => console.error(err))
-				
-				
-				},			
-				
+				},
+
 			getInfoCharacters: (uid) => {
 				fetch("https://www.swapi.tech/api/people/"+uid, {
 					method: "GET"
 				})
 				.then(res => res.json())
 				.then(data => setStore({ infoCharacters: data.result.properties}))
-				// .then(data => console.log(data))
-				.catch(err => console.error(err))
-				},	
 		
+				.catch(err => console.error(err))
+				},
+
+				//PLANETS
+
+			getPlanets: () => {
+			fetch("https://www.swapi.tech/api/planets/", {
+				method: "GET"
+			})
+			.then(res => res.json())
+			.then(data => setStore({ planets: data.results}))
+	
+			.catch(err => console.error(err))
+			},
+
+		getInfoPlanets: (uid) => {
+			fetch("https://www.swapi.tech/api/planets/"+uid, {
+				method: "GET"
+			})
+			.then(res => res.json())
+			.then(data => setStore({ infoPlanets: data.result.properties}))
+	
+			.catch(err => console.error(err))
+			},
+
+			//VEHICLES
+
+		getVehicles: () => {
+			fetch("https://www.swapi.tech/api/vehicles/", {
+				method: "GET"
+			})
+			.then(res => res.json())
+			.then(data => setStore({ vehicles: data.results}))
+			// .then(data => console.log(data))
+			.catch(err => console.error(err))
+			},
+
+		getInfoVehicles: (uid) => {
+			fetch("https://www.swapi.tech/api/vehicles/"+uid, {
+				method: "GET"
+			})
+			.then(res => res.json())
+			.then(data => setStore({ infoVehicles: data.result.properties}))
+	
+			.catch(err => console.error(err))
+			},
+
 
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {

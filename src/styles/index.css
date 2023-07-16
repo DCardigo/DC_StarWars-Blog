@@ -6,8 +6,3 @@
     height: 300px;
 }
 
-.dropdown-menu[data-bs-popper] {
-    
-    left: -15;
-    
-  }
