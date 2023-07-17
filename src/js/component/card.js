@@ -11,14 +11,6 @@ export const Card = (props) => {
 
     const navigate = useNavigate()
 
-    // const handleClick = e => {
-	// 	e.preventDefault();
-    //     (store.favoritos.indexOf(props.item.name) !=-1)? null
-    //     :actions.addFavorito(props.item.name,props.uid);
-    //     // :setStore({favoritos: getStore().favoritos.concat({name,id})})
-    //     // store.favoritos.includes(props.item.name)? null
-    //     // :actions.addFavorito(props.item.name,props.uid);
-    // };
 
     // FUNCION ICONO DE ME GUSTA
 
@@ -29,23 +21,19 @@ export const Card = (props) => {
 
         if(!isFavorite === true) {
                 favs.push ({
-                name: props.name,
+                name: props.item.name,
                 id: props.uid,
             })
 
         } else (
-            favs = favs.filter((item) => item.name !== props.name)
+            favs = favs.filter((item) => item.name !== props.item.name)
             )
          
         actions.addFavorito(favs)
-
     }
 
-
-    // useEffect utilizado para setaar el estado de favoritos en función de si el nombre esta o no en la cesta
-
     useEffect(() => {
-        const isCharacterFavorite = store.favoritos.some((favorite) => favorite.name === props.name);
+        const isCharacterFavorite = store.favoritos.some((favorite) => favorite.name === props.item.name);
         setIsFavorite(isCharacterFavorite);
     }, [store.favoritos]);
 
@@ -64,7 +52,8 @@ export const Card = (props) => {
                 </button>
                 <button type="button" className="btn btn-primary mx-3" onClick={handleClick}>
                 {
-                        (isFavorite) ? <i className="fa-sharp fa-solid fa-heart fa-lg"></i>: <i className="fa-sharp fa-regular fa-heart fa-lg"></i>
+                       
+                        (isFavorite) ? <i className="fas fa-heart"></i>:<i className="far fa-heart"></i>
                     }
 
                 </button>

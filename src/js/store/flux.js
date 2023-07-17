@@ -31,8 +31,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// includes(),
 
-			addFavorito: (favList) => {
-				setStore({ favoritos: favList })
+			addFavorito: (favs) => {
+				setStore({ favoritos: favs })
 			},
 
 
