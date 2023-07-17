@@ -29,27 +29,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 
-			// includes(),
+		
 
 			addFavorito: (favs) => {
 				setStore({ favoritos: favs })
 			},
-
-
-			// addFavorito:(name,id)=> {
-
-			// 	// const nombre = getActions().addFavorito(name)
-			// 	setStore({favoritos: getStore().favoritos.concat({name,id})})
-
-			// 	// (getStore().favoritos.length === 0) ?
-			// 	// setStore({favoritos: getStore().favoritos.concat({name,id})})
-			// 	// :(getStore().favoritos.indexOf(name) !=-1)?
-			// 	// null
-			// 	// :setStore({favoritos: getStore().favoritos.concat({name,id})})
-
-			// },
-
-			// 
 
 			removeFav: (el,i) => {
 				const updatedItems =(getStore().favoritos.indexOf(el) !=-1)?
@@ -112,7 +96,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			})
 			.then(res => res.json())
 			.then(data => setStore({ vehicles: data.results}))
-			// .then(data => console.log(data))
 			.catch(err => console.error(err))
 			},
 

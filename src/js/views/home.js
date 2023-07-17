@@ -13,10 +13,9 @@ export const Home = () => {
 
 	useEffect(() => {
 		actions.getCharacters();
-		
 		actions.getPlanets();
 		actions.getVehicles();
-		
+		console.log(store.infoCharacters);
 	}, []);
 
 return (

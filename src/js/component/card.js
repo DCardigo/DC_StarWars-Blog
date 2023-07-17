@@ -32,6 +32,37 @@ export const Card = (props) => {
         actions.addFavorito(favs)
     }
 
+    // const navegar = e =>{
+        //         if (store.characters.includes(props.item.name)){
+        //             navigate("/charactersdetails/" + props.uid)
+        //         }else{
+        //             if (store.planets.includes(props.item.name)){
+        //                 navigate("/PlanetsDetails/" + props.uid)
+        //             }else{
+        //                 if (store.vehicles.includes(props.item.name)){
+        //                     navigate("/VehiclesDetails/" + props.uid)
+        //             }
+        //         }
+        //     }
+        // }
+
+        const navegar = e =>{
+            const personaje = store.characters.indexOf(props.item.name)
+            const planeta = store.planets.indexOf(props.item.name)
+            const vehiculo = store.vehicles.indexOf(props.item.name)
+
+                personaje != -1 ? navigate("/charactersdetails/" + props.uid):
+            
+                planeta != -1 ? navigate("/PlanetsDetails/" + props.uid):
+            
+                navigate("/VehiclesDetails/" + props.uid)
+                
+            }       
+
+// const navegar = (e) =>{store.vehicles.indexOf(props.item.name)}
+//    const isInArray = navegar !== -1;
+//    console.log(isInArray); // true
+
     useEffect(() => {
         const isCharacterFavorite = store.favoritos.some((favorite) => favorite.name === props.item.name);
         setIsFavorite(isCharacterFavorite);
@@ -46,8 +77,11 @@ export const Card = (props) => {
             <div className="card-body">
                 <h5 className="card-title">{props.item.name}</h5>
                 <p className="card-text">UID:{props.uid} </p>
+
+                <button type="button" className="btn btn-primary" onClick={navegar}>
     
-                <button type="button" className="btn btn-primary" onClick={(e)=> navigate("/charactersdetails/" + props.uid)}>
+                {/* <button type="button" className="btn btn-primary" onClick={ (e)=> navigate("/VehiclesDetails/" + props.uid)
+                    }> */}
                 Learn more!
                 </button>
                 <button type="button" className="btn btn-primary mx-3" onClick={handleClick}>

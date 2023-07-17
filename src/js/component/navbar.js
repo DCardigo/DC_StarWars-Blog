@@ -8,7 +8,7 @@ export const Navbar = () => {
 	const { actions, store } = useContext(Context);
 
 	
-console.log(store.favoritos);
+
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
 			<Link to="/">

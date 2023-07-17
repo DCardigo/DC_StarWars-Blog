@@ -51,24 +51,24 @@ export const VehiclesDetails = () =>{
                     <p>{store.infoVehicles.name}</p>
                 </div>
                 <div className="col-2 text-center text-danger">
-                    <p className="fw-bold" >Birth Year</p>
-                    <p>{store.infoVehicles.birth_year}</p>
+                    <p className="fw-bold" >Model</p>
+                    <p>{store.infoVehicles.model}</p>
                 </div>
                 <div className="col-2 text-center text-danger">
-                    <p className="fw-bold" >Gender</p>
-                    <p>{store.infoVehicles.gender}</p>
+                    <p className="fw-bold" >Passengers</p>
+                    <p>{store.infoVehicles.passengers}</p>
                 </div>
                 <div className="col-2 text-center text-danger">
-                    <p className="fw-bold" >Height</p>
-                    <p>{store.infoVehicles.height}</p>
+                    <p className="fw-bold" >Manufacturer</p>
+                    <p>{store.infoVehicles.manufacturer}</p>
                 </div>
                 <div className="col-2 text-center text-danger">
-                    <p className="fw-bold" >Skin Color</p>
-                    <p>{store.infoVehicles.skin_color}</p>
+                    <p className="fw-bold" >Cargo Capacity</p>
+                    <p>{store.infoVehicles.cargo_capacity}</p>
                 </div>
                 <div className="col-2 text-center text-danger">
-                    <p className="fw-bold" >Eye color</p>
-                    <p>{store.infoVehicles.eye_color}</p>
+                    <p className="fw-bold" >Vehicle Class</p>
+                    <p>{store.infoVehicles.vehicle_class}</p>
                 </div>
 
         </div>
