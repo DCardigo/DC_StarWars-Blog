@@ -12,7 +12,7 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
 			<Link to="/">
-				<img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.entertainmentearth.com%2Fimages%2Ftheme_logos%2Fstar_wars.gif&f=1&nofb=1&ipt=9f605e27ac9ee99ed9fa64222ebb373f3c2e6efa375041f7cb08512d78c1500e&ipo=images" alt="Descripción de la imagen"/>
+				<img src="https://cdn.freebiesupply.com/logos/large/2x/star-wars-logo-png-transparent.png" alt="Descripción de la imagen" id="logo"/>
 
 			</Link>
 			
@@ -33,6 +33,7 @@ export const Navbar = () => {
 					:store.favoritos.map((el,i) => (
 						
 					<li id={i} key = {i} >
+						
 						{store.characters.find(nom => nom.name === el.name)? 
 
 						<Link to= {`/charactersdetails/${el.id}`}>
