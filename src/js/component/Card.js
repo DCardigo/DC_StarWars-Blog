@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Link, useNavigate} from "react-router-dom";
 
 
-export const CardVehicles = (props) => {
+export const Card = (props) => {
     const { actions, store } = useContext(Context);
     const [isFavorite, setIsFavorite] = useState(false);
 
@@ -32,6 +32,17 @@ export const CardVehicles = (props) => {
         actions.addFavorito(favs)
     }
 
+    const handlerNavigate = (e)=>{
+        e.preventDefault()
+        store.characters.find(nom => nom.name === props.item.name)? 
+        navigate("/charactersdetails/" + props.uid)
+        :store.planets.find(nom => nom.name === props.item.name)? 
+        navigate("/PlanetsDetails/" + props.uid)
+        :store.vehicles.find(nom => nom.name === props.item.name)? 
+        navigate("/VehiclesDetails/" + props.uid)
+        :null
+    }
+
 
     useEffect(() => {
         const isCharacterFavorite = store.favoritos.some((favorite) => favorite.name === props.item.name);
@@ -44,12 +55,13 @@ export const CardVehicles = (props) => {
 
         <div className="card mx-3" style={{width: 18 + 'rem'}}>
             <img src="https://e0.pxfuel.com/wallpapers/813/200/desktop-wallpaper-holden-decor-statement-sparkle-star-12616-black-silver.jpg" className="card-img-top" alt="..."/>
-            <div className="card-body">
+            <div className="card-body ">
                 <h5 className="card-title">{props.item.name}</h5>
                 <p className="card-text">UID:{props.uid} </p>
     
-                <button type="button" className="btn btn-primary" onClick={ (e)=> navigate("/VehiclesDetails/" + props.uid)
-                    }>
+                <button type="button" className="btn btn-primary" onClick={handlerNavigate}>
+                {/* <button type="button" className="btn btn-primary" onClick={ (e)=> navigate("/charactersdetails/" + props.uid)
+                    }> */}
                 Learn more!
                 </button>
                 <button type="button" className="btn btn-primary mx-3" onClick={handleClick}>
@@ -64,7 +76,8 @@ export const CardVehicles = (props) => {
 
     );
 };
-CardVehicles.propTypes = {
+
+Card.propTypes = {
 
 	name: PropTypes.string,
 	id: PropTypes.string,

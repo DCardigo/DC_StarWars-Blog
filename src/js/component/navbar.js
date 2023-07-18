@@ -39,13 +39,13 @@ export const Navbar = () => {
 							{el.name}
 						</Link>
 
-					:store.planets.find(nombre => nombre.name === el.name)? 
+					:store.planets.find(nom => nom.name === el.name)? 
 
 						<Link to= {`/PlanetsDetails/${el.id}`}>
 							{el.name}
 						</Link>
 
-					:store.vehicles.find(nombre => nombre.name === el.name)?
+					:store.vehicles.find(nom => nom.name === el.name)?
 
 						<Link to= {`/VehiclesDetails/${el.id}`}>
 						{el.name}
