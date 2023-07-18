@@ -16,35 +16,46 @@ export const Navbar = () => {
 
 			</Link>
 			
-		 <div className="dropdown">
+		 <div className="dropdown mx-4">
 				<button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 					Favorites
-					<span className="badge bg-secondary">{store.favoritos.length}</span>
+					<span className="badge bg-secondary mx-2">{store.favoritos.length}</span>
 				</button>
 				<ul className="dropdown-menu  dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
 				
 				
 				{store.favoritos.length === 0?  
 				
-				<li>
-					Empty
-				</li>
-				
-				:store.favoritos.map((el,i) => (
-
+					<li>
+						Empty
+					</li>
+					
+					:store.favoritos.map((el,i) => (
+						
 					<li id={i} key = {i} >
-					<Link to= {`/charactersdetails/${el.id}`}>
-					{el.name}
-					</Link>
-					
-					
+						{store.characters.find(nom => nom.name === el.name)? 
+
+						<Link to= {`/charactersdetails/${el.id}`}>
+							{el.name}
+						</Link>
+
+					:store.planets.find(nombre => nombre.name === el.name)? 
+
+						<Link to= {`/PlanetsDetails/${el.id}`}>
+							{el.name}
+						</Link>
+
+					:store.vehicles.find(nombre => nombre.name === el.name)?
+
+						<Link to= {`/VehiclesDetails/${el.id}`}>
+						{el.name}
+						</Link>
+					:null
+					}
 					<button  type="button" onClick={() => actions.removeFav(el,i)} className="btn float-end px-2 py-0" aria-label="Close">
 					<i className="fas fa-trash"></i>
 					</button>
-
-					
-   
-					
+	
 				</li>
 				))}
 					

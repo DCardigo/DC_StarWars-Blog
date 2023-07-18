@@ -4,7 +4,9 @@ import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 
 import { Context } from "../store/appContext.js";
-import { Card } from "../component/card";
+import { CardCharacters } from "../component/cardCharacters";
+import { CardPlanets } from "../component/cardPlanets.js";
+import { CardVehicles } from "../component/cardVehicles.js";
 
 
 export const Home = () => {
@@ -15,17 +17,17 @@ export const Home = () => {
 		actions.getCharacters();
 		actions.getPlanets();
 		actions.getVehicles();
-		console.log(store.infoCharacters);
+		
 	}, []);
-
+// console.log(store.characters);
 return (
 
-	<>
+	<div className="mx-5" >
 
 	<h1 className="text-danger">Characters</h1>
-	<div className="row row-cols-1 row-cols-md-3 g-4 flex-nowrap overflow-auto">
+	<div className="row row-cols-1 row-cols-md-3 g-4 flex-nowrap overflow-auto ">
 		  {store.characters.map((item) => 
-			<Card
+			<CardCharacters
 				uid={item.uid}
 				key={item.uid}
 				item={item}
@@ -36,7 +38,7 @@ return (
 	<h1 className="text-danger">Planets</h1>
 	<div className="row row-cols-1 row-cols-md-3 g-4 flex-nowrap overflow-auto">
 		  {store.planets.map((item) => 
-			<Card
+			<CardPlanets
 				uid={item.uid}
 				key={item.uid}
 				item={item}
@@ -47,7 +49,7 @@ return (
 	<h1 className="text-danger">Vehicles</h1>
 	<div className="row row-cols-1 row-cols-md-3 g-4 flex-nowrap overflow-auto">
 		  {store.vehicles.map((item) => 
-			<Card
+			<CardVehicles
 				uid={item.uid}
 				key={item.uid}
 				item={item}
@@ -55,6 +57,6 @@ return (
 		
 	</div>
 
-	</>
+	</div>
 	);
 }
