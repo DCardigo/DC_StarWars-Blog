@@ -35,7 +35,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ favoritos: favs })
 			},
 
-			removeFav: (el,i) => {
+			removeFav: (e,el) => {
+				e.stopPropagation()
 				const updatedItems =(getStore().favoritos.indexOf(el) !=-1)?
 				getStore().favoritos.filter((item) => item != el)
 				:null

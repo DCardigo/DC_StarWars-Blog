@@ -45,37 +45,38 @@ export const Navbar = () => {
 						
 						:store.favoritos.map((el,i) => (
 							
-						<li id={i} key = {i} className="mx-2" >
-							
-							{store.characters.find(nom => nom.name === el.name)? 
-
-							<Link to= {`/charactersdetails/${el.id}`}>
-								{el.name}
-							</Link>
-
-							:store.planets.find(nom => nom.name === el.name)? 
-
-								<Link to= {`/PlanetsDetails/${el.id}`}>
-									{el.name}
-								</Link>
-
-							:store.vehicles.find(nom => nom.name === el.name)?
-
-								<Link to= {`/VehiclesDetails/${el.id}`}>
-									{el.name}
-								</Link>
+							<li id={i} key = {i} className="mx-2" >
 								
-								:null
-							}
+								{store.characters.find(nom => nom.name === el.name)? 
 
-							{/* BOTON ELIMINAR */}
+								<Link to= {`/charactersdetails/${el.id}`}>
+									{el.name}
+								</Link>
 
-							<button  type="button" onClick={() => actions.removeFav(el,i)} className="btn float-end px-2 py-0" aria-label="Close">
-							<i className="fas fa-trash"></i>
-							</button>
-		
-						</li>
-					))}
+								:store.planets.find(nom => nom.name === el.name)? 
+
+									<Link to= {`/PlanetsDetails/${el.id}`}>
+										{el.name}
+									</Link>
+
+								:store.vehicles.find(nom => nom.name === el.name)?
+
+									<Link to= {`/VehiclesDetails/${el.id}`}>
+										{el.name}
+									</Link>
+									
+									:null
+								}
+
+								{/* BOTON ELIMINAR */}
+
+								<button  type="button" onClick={(e) => actions.removeFav(e,el)} className="btn float-end px-2 py-0" aria-label="Close">
+								<i className="fas fa-trash"></i>
+								</button>
+			
+							</li>
+						))
+					}
 					
 				</ul>
 			</div> 
