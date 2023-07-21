@@ -31,6 +31,8 @@ export const Card = (props) => {
          
         actions.addFavorito(favs)
     }
+  
+    // FUNCION ICONO DE LEARN MORE
 
     const handlerNavigate = (e)=>{
         e.preventDefault()
@@ -53,6 +55,8 @@ export const Card = (props) => {
 	return (
 
         <div className="card mx-3" style={{width: 18 + 'rem'}}>
+
+            {/* CONDICIONAL IMAGEN */}
 
             {store.characters.find(nom => nom.name === props.item.name)? 
             <img src={`https://starwars-visualguide.com/assets/img/characters/${props.uid}.jpg`} className="card-img-top" alt="..."/>

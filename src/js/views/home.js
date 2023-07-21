@@ -11,6 +11,8 @@ import { Card} from "../component/Card";
 export const Home = () => {
 
 	const { actions, store } = useContext(Context);
+	
+
 
 	useEffect(() => {
 		actions.getCharacters();
@@ -18,7 +20,7 @@ export const Home = () => {
 		actions.getVehicles();
 		
 	}, []);
-// console.log(store.characters);
+
 return (
 
 	<div className="mx-5" >
