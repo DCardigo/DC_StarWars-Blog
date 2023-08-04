@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Context } from "../store/appContext.js";
 
@@ -7,8 +7,14 @@ import { Context } from "../store/appContext.js";
 export const Navbar = () => {
 
 	const { actions, store } = useContext(Context);
-
+	const navigate = useNavigate()
 	
+
+	const handlerNavigate = (e)=>{
+        e.preventDefault()
+        navigate("/login")
+       
+    }
 
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
@@ -20,6 +26,8 @@ export const Navbar = () => {
 				<img src="https://cdn.freebiesupply.com/logos/large/2x/star-wars-logo-png-transparent.png" alt="Descripción de la imagen" id="logo"/>
 
 			</Link>
+
+			<button type="button" className="btn btn-primary" onClick={handlerNavigate}>Login</button>
 			
 		 <div className="dropdown mx-4">
 

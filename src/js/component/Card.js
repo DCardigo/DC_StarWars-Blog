@@ -37,7 +37,7 @@ export const Card = (props) => {
     const handlerNavigate = (e)=>{
         e.preventDefault()
         store.characters.find(nom => nom.name === props.item.name)? 
-        navigate("/charactersdetails/" + props.uid)
+        navigate("/CharactersDetails/" + props.uid)
         :store.planets.find(nom => nom.name === props.item.name)? 
         navigate("/PlanetsDetails/" + props.uid)
         :store.vehicles.find(nom => nom.name === props.item.name)? 

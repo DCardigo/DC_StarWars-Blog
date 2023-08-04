@@ -29,7 +29,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 
-		
+			login: (dataEmail, dataPassword) => {
+
+
+				
+			},
 
 			addFavorito: (favs) => {
 				setStore({ favoritos: favs })
