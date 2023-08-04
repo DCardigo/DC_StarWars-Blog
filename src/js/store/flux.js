@@ -1,4 +1,4 @@
-
+import axios from "axios"
 
 const getState = ({ getStore, getActions, setStore }) => {
 
@@ -11,6 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			vehicles:[],
 			infoVehicles:[],
 			favoritos:[],
+			token:"",
 		
 
 
@@ -29,10 +30,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 
-			login: (dataEmail, dataPassword) => {
+			login: async (dataEmail,dataPassword) => {
 
+				try {
 
-				
+					let data = await axios.post('https://laughing-space-giggle-x5r5rvv599vc9xrq-3001.app.github.dev//api/login',{
+
+						email:dataEmail,
+
+						password:dataPassword
+
+					})
+
+					console.log(data);
+
+					localStorage.setItem("token",data.data.access_token)
+
+					setStore({token:data.data.access_token})
+
+					return true;
+
+				} catch (error) {
+
+					console.log(error);
+
+					return false;
+
+				}
 			},
 
 			addFavorito: (favs) => {

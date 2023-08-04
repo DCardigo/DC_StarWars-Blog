@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { Context } from "../store/appContext.js";
@@ -7,14 +7,28 @@ import { Context } from "../store/appContext.js";
 export const Navbar = () => {
 
 	const { actions, store } = useContext(Context);
+
+	const [token,setToken] = useState(true)
 	const navigate = useNavigate()
 	
 
-	const handlerNavigate = (e)=>{
+	const handlerLogIn = (e)=>{
         e.preventDefault()
         navigate("/login")
-       
+		setToken(true)
     }
+
+// añadir la variable boolleana token al flux para poder utilizarlo también con el submit del login. 
+// Cuando aquí le damos a log out debe desaparecer el favoritos y aparecer de nuevo cuando nos logeamos no cuando le damos a log in.
+
+
+	const handlerLogOut = (e)=>{
+        e.preventDefault()
+        localStorage.removeItem("token")
+		// navigate("/")
+		setToken(false)
+    }
+	
 
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
@@ -27,67 +41,76 @@ export const Navbar = () => {
 
 			</Link>
 
-			<button type="button" className="btn btn-primary" onClick={handlerNavigate}>Login</button>
+			{ (token === false) ?
+
+				<button type="button" className="btn btn-primary" onClick={handlerLogIn}>Log in</button>
+
+				: <button type="button" className="btn btn-primary" onClick={handlerLogOut}>Log out</button>
+
+			}
 			
-		 <div className="dropdown mx-4">
 
-				<button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-					Favorites
+			{(token === false) ? null : 
+				<div className="dropdown mx-4">
 
-					{/* CONTADOR */}
+					<button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+						Favorites
 
-					<span className="badge bg-secondary mx-2">{store.favoritos.length}</span>
+						{/* CONTADOR */}
 
-				</button>
+						<span className="badge bg-secondary mx-2">{store.favoritos.length}</span>
 
-				<ul className="dropdown-menu  dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+					</button>
 
-					{/* CONDICIONAL LISTADO FAVORITOS */}
-				
-				
-					{store.favoritos.length === 0?  
+					<ul className="dropdown-menu  dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+
+						{/* CONDICIONAL LISTADO FAVORITOS */}
 					
-						<li className="mx-2" >
-							Empty
-						</li>
+					
+						{store.favoritos.length === 0?  
 						
-						:store.favoritos.map((el,i) => (
-							
-							<li id={i} key = {i} className="mx-2" >
-								
-								{store.characters.find(nom => nom.name === el.name)? 
-
-								<Link to= {`/charactersdetails/${el.id}`}>
-									{el.name}
-								</Link>
-
-								:store.planets.find(nom => nom.name === el.name)? 
-
-									<Link to= {`/PlanetsDetails/${el.id}`}>
-										{el.name}
-									</Link>
-
-								:store.vehicles.find(nom => nom.name === el.name)?
-
-									<Link to= {`/VehiclesDetails/${el.id}`}>
-										{el.name}
-									</Link>
-									
-									:null
-								}
-
-								{/* BOTON ELIMINAR */}
-
-								<button  type="button" onClick={(e) => actions.removeFav(e,el)} className="btn float-end px-2 py-0" aria-label="Close">
-								<i className="fas fa-trash"></i>
-								</button>
-			
+							<li className="mx-2" >
+								Empty
 							</li>
-						))
-					}
-					
-				</ul>
-			</div> 
+							
+							:store.favoritos.map((el,i) => (
+								
+								<li id={i} key = {i} className="mx-2" >
+									
+									{store.characters.find(nom => nom.name === el.name)? 
+
+									<Link to= {`/charactersdetails/${el.id}`}>
+										{el.name}
+									</Link>
+
+									:store.planets.find(nom => nom.name === el.name)? 
+
+										<Link to= {`/PlanetsDetails/${el.id}`}>
+											{el.name}
+										</Link>
+
+									:store.vehicles.find(nom => nom.name === el.name)?
+
+										<Link to= {`/VehiclesDetails/${el.id}`}>
+											{el.name}
+										</Link>
+										
+										:null
+									}
+
+									{/* BOTON ELIMINAR */}
+
+									<button  type="button" onClick={(e) => actions.removeFav(e,el)} className="btn float-end px-2 py-0" aria-label="Close">
+									<i className="fas fa-trash"></i>
+									</button>
+				
+								</li>
+							))
+						}
+						
+					</ul>
+				</div> }
+			
 		</nav>
 		
 	);

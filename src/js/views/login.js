@@ -1,26 +1,33 @@
 import React, {useContext, useEffect, useState} from "react";
 import { Context } from "../store/appContext.js";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"
 
 export const Login = () =>{
 
     const { store, actions } = useContext(Context);
+	const navigate = useNavigate();
 
 	const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-	const handlerSubmit = e => {
-		e.preventDefault();
-		// actions.login(email, password);
-		console.log(email, password);
-		setEmail("");
-		setPassword("");
+	async function handlerSubmit(e)  {
+		e.preventDefault()
+		let logged = await actions.login(email, password)
+		if (logged){
+			navigate('/')
+		} else{
+			setEmail("");
+			setPassword("");
+		}
+		// console.log(email, password);
+		
 	};
 
     return (
         <div className="container">
 			<div>
-				<h1 className="text-center mt-5">Add a new contact</h1>
+				<h1 className="text-center mt-5">Log in</h1>
 				<form onSubmit={handlerSubmit}>
 					
 					<div className="form-group">
