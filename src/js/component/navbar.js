@@ -15,18 +15,18 @@ export const Navbar = () => {
 	const handlerLogIn = (e)=>{
         e.preventDefault()
         navigate("/login")
-		setToken(true)
+		
     }
 
 // añadir la variable boolleana token al flux para poder utilizarlo también con el submit del login. 
 // Cuando aquí le damos a log out debe desaparecer el favoritos y aparecer de nuevo cuando nos logeamos no cuando le damos a log in.
-
+	
 
 	const handlerLogOut = (e)=>{
         e.preventDefault()
         localStorage.removeItem("token")
-		// navigate("/")
-		setToken(false)
+		actions.changeLog()
+		navigate("/")
     }
 	
 
@@ -41,7 +41,7 @@ export const Navbar = () => {
 
 			</Link>
 
-			{ (token === false) ?
+			{ (store.log === true) ?
 
 				<button type="button" className="btn btn-primary" onClick={handlerLogIn}>Log in</button>
 
@@ -50,7 +50,7 @@ export const Navbar = () => {
 			}
 			
 
-			{(token === false) ? null : 
+			{(store.log === true) ? null : 
 				<div className="dropdown mx-4">
 
 					<button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

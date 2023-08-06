@@ -20,7 +20,6 @@ export const Login = () =>{
 			setEmail("");
 			setPassword("");
 		}
-		// console.log(email, password);
 		
 	};
 

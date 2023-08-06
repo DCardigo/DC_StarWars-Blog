@@ -12,6 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			infoVehicles:[],
 			favoritos:[],
 			token:"",
+			log: true,
 		
 
 
@@ -30,11 +31,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 
+			changeLog: () => {setStore({log:true})
+		
+							setStore({favoritos:[]})},
+
 			login: async (dataEmail,dataPassword) => {
 
 				try {
 
-					let data = await axios.post('https://laughing-space-giggle-x5r5rvv599vc9xrq-3001.app.github.dev//api/login',{
+					let data = await axios.post('https://laughing-space-giggle-x5r5rvv599vc9xrq-3001.app.github.dev/api/login',{
 
 						email:dataEmail,
 
@@ -47,6 +52,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					localStorage.setItem("token",data.data.access_token)
 
 					setStore({token:data.data.access_token})
+					setStore({log:false})
 
 					return true;
 
