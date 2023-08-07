@@ -59,7 +59,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					localStorage.setItem("token",data.data.access_token)
 
 					setStore({token:data.data.access_token})
-					setStore({log:false})
 
 					return true;
 

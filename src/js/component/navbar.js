@@ -12,11 +12,11 @@ export const Navbar = () => {
 	const navigate = useNavigate()
 	
 
-	const handlerLogIn = (e)=>{
-        e.preventDefault()
-        navigate("/login")
+	// const handlerLogIn = (e)=>{
+    //     e.preventDefault()
+    //     navigate("/login")
 		
-    }
+    // }
 
 
 	const handlerLogOut = (e)=>{
@@ -29,12 +29,6 @@ export const Navbar = () => {
 		
     }
 
-	// let logout = actions.logout()
-	// useEffect(() => {
-	// console.log("funciona");
-	// }, [store.log]);
-	
-
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
 
@@ -46,9 +40,9 @@ export const Navbar = () => {
 
 			</Link>
 
-			{ (store.log === false) ?
+			{ (store.log === false) ? null
 
-				<button type="button" className="btn btn-primary" onClick={handlerLogIn}>Log in</button>
+				// <button type="button" className="btn btn-primary" onClick={handlerLogIn}>Log in</button>
 
 				: <button type="button" className="btn btn-primary" onClick={handlerLogOut}>Log out</button>
 
