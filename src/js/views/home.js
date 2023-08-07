@@ -5,20 +5,29 @@ import "../../styles/home.css";
 
 import { Context } from "../store/appContext.js";
 import { Card} from "../component/Card";
+import { useNavigate } from "react-router";
 
 
 
 export const Home = () => {
 
 	const { actions, store } = useContext(Context);
+	const navigate = useNavigate();
 	
+	async function redireccion(){
 
+		let logged = await actions.getProfile();
+		if(!logged) {
+			navigate("/login")
+		}
+	} 
 
 	useEffect(() => {
 		actions.getCharacters();
 		actions.getPlanets();
 		actions.getVehicles();
-		
+		redireccion()
+
 	}, []);
 
 return (

@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useState, useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { Context } from "../store/appContext.js";
@@ -18,16 +18,21 @@ export const Navbar = () => {
 		
     }
 
-// añadir la variable boolleana token al flux para poder utilizarlo también con el submit del login. 
-// Cuando aquí le damos a log out debe desaparecer el favoritos y aparecer de nuevo cuando nos logeamos no cuando le damos a log in.
-	
 
 	const handlerLogOut = (e)=>{
         e.preventDefault()
-        localStorage.removeItem("token")
-		actions.changeLog()
-		navigate("/")
+        // localStorage.removeItem("token")
+		let logout = actions.logout()
+		if (!logout) {
+			navigate("/login")
+		}
+		
     }
+
+	// let logout = actions.logout()
+	// useEffect(() => {
+	// console.log("funciona");
+	// }, [store.log]);
 	
 
 	return (
@@ -41,7 +46,7 @@ export const Navbar = () => {
 
 			</Link>
 
-			{ (store.log === true) ?
+			{ (store.log === false) ?
 
 				<button type="button" className="btn btn-primary" onClick={handlerLogIn}>Log in</button>
 
@@ -50,7 +55,7 @@ export const Navbar = () => {
 			}
 			
 
-			{(store.log === true) ? null : 
+			{(store.log === false) ? null : 
 				<div className="dropdown mx-4">
 
 					<button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

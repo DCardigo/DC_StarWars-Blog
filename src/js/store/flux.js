@@ -12,7 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			infoVehicles:[],
 			favoritos:[],
 			token:"",
-			log: true,
+			log: false,
 		
 
 
@@ -31,9 +31,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 
-			changeLog: () => {setStore({log:true})
+			// changeLog: () => {setStore({log:true})
 		
-							setStore({favoritos:[]})},
+			// 				setStore({favoritos:[]})},
+
+			logout: () => {
+				localStorage.removeItem("token")
+				setStore({log:false})
+
+				return false
+			},
 
 			login: async (dataEmail,dataPassword) => {
 
@@ -63,6 +70,74 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 
 				}
+			},
+
+			getProfile: async () => {
+
+				let token =localStorage.getItem("token")
+
+				try {
+
+					let data = await axios.get('https://laughing-space-giggle-x5r5rvv599vc9xrq-3001.app.github.dev/api/profile',{
+
+						headers:{
+							"Authorization": `Bearer ${token}`,						
+						}
+
+					})
+
+					console.log(data);
+
+					// localStorage.setItem("token",data.data.access_token)
+
+					// setStore({token:data.data.access_token})
+					setStore({log:true})
+
+					return true;
+
+				} catch (error) {
+
+					console.log(error);
+					setStore({log:false})
+
+
+					return false;
+
+				}
+			},
+
+			validToken: async () => {
+
+				let token = localStorage.getItem("token")
+
+				try {
+
+					//codigo exitoso
+
+					let data = await axios.get('https://laughing-space-giggle-x5r5rvv599vc9xrq-3001.app.github.dev/api/validate',{
+
+						headers:{
+
+							"Authorization": `Bearer ${token}`,
+
+						}
+
+					})
+
+					console.log(data);
+
+					return true;
+
+				} catch (error) {
+
+					//manejar los errrores
+
+					console.log(error);
+
+					return false;
+
+				}
+
 			},
 
 			addFavorito: (favs) => {
