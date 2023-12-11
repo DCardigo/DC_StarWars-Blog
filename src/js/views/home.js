@@ -26,7 +26,7 @@ export const Home = () => {
 		actions.getCharacters();
 		actions.getPlanets();
 		actions.getVehicles();
-		redireccion()
+		// redireccion()
 
 	}, []);
 

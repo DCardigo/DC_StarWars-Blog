@@ -12,11 +12,11 @@ export const Navbar = () => {
 	const navigate = useNavigate()
 	
 
-	// const handlerLogIn = (e)=>{
-    //     e.preventDefault()
-    //     navigate("/login")
+	const handlerLogIn = (e)=>{
+        e.preventDefault()
+        navigate("/login")
 		
-    // }
+    }
 
 
 	const handlerLogOut = (e)=>{
@@ -49,7 +49,7 @@ export const Navbar = () => {
 			}
 			
 
-			{(store.log === false) ? null : 
+			{/* {(store.log === false) ? null :  */}
 				<div className="dropdown mx-4">
 
 					<button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -108,7 +108,8 @@ export const Navbar = () => {
 						}
 						
 					</ul>
-				</div> }
+				</div> 
+				{/* } */}
 			
 		</nav>
 		
